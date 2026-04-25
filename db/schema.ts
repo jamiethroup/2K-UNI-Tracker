@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, boolean } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, integer, boolean, varchar, timestamp } from 'drizzle-orm/pg-core';
 
 export const superstars = pgTable('superstars', {
   id: serial('id').primaryKey(),
@@ -16,4 +16,14 @@ export const championships = pgTable('championships', {
   brand: text('brand').notNull(),
   currentHolderId: integer('current_holder_id'), // Can be null if vacant
   daysHeld: integer('days_held').default(0),
+  image: text('image'), // Championship belt image URL
+});
+
+export const storylines = pgTable('storylines', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(), // CRITICAL: Ties it to the Clerk user
+  title: text('title').notNull(),
+  description: text('description'),
+  status: text('status').default('Ongoing'), // e.g., 'Ongoing', 'Completed'
+  createdAt: timestamp('created_at').defaultNow(),
 });
