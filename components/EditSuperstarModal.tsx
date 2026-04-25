@@ -25,10 +25,8 @@ export function EditSuperstarModal({ star }: { star: Superstar }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="h-8 text-xs bg-zinc-900 border-zinc-700 hover:bg-zinc-800 text-zinc-300">
-          Edit
-        </Button>
+      <DialogTrigger className="h-8 text-xs bg-zinc-900 border border-zinc-700 hover:bg-zinc-800 text-zinc-300 rounded px-3 py-1 inline-flex items-center">
+        Edit
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px] bg-zinc-950 border-zinc-800 text-white">
