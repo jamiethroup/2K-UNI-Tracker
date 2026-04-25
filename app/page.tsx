@@ -5,6 +5,8 @@ import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { seedUniverseAction } from './actions/seed';
 import { UserButton } from '@clerk/nextjs';
+import { ClearRosterButton } from '@/components/ClearRosterButton';
+import { EditSuperstarModal } from '@/components/EditSuperstarModal';
 import {
   Table,
   TableBody,
@@ -54,8 +56,14 @@ export default async function Dashboard() {
     <main className="min-h-screen bg-zinc-950 text-white p-8">
       {/* Header */}
       <header className="flex justify-between items-center mb-12 max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold">My Universe</h1>
-        <UserButton />
+        <div className="flex items-center gap-4">
+          <h1 className="text-3xl font-bold">My Universe</h1>
+          <span className="text-sm text-zinc-400">({userRoster.length} superstars)</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <ClearRosterButton />
+          <UserButton />
+        </div>
       </header>
 
       {/* Roster Table */}
@@ -76,6 +84,8 @@ export default async function Dashboard() {
                 <TableHead className="text-zinc-400">Brand</TableHead>
                 <TableHead className="text-right text-zinc-400">Overall</TableHead>
                 <TableHead className="text-right text-zinc-400">Alignment</TableHead>
+                {/* Add an empty header for the Actions column */}
+                <TableHead className="text-right text-zinc-400"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -99,6 +109,10 @@ export default async function Dashboard() {
                     <span className={star.isHeel ? "text-red-400 font-medium" : "text-green-400 font-medium"}>
                       {star.isHeel ? "Heel" : "Face"}
                     </span>
+                  </TableCell>
+                  {/* Drop the Edit Modal in the final cell */}
+                  <TableCell className="text-right">
+                    <EditSuperstarModal star={star} />
                   </TableCell>
                 </TableRow>
               ))}

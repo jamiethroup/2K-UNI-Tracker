@@ -28,10 +28,8 @@ export function BookTitleModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold">
-          Book Title Change
-        </Button>
+      <DialogTrigger className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded transition-colors">
+        Book Title Change
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px] bg-zinc-950 border-zinc-800 text-white">
