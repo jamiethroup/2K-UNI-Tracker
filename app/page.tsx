@@ -6,6 +6,15 @@ import { superstars } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 import { redirect } from 'next/navigation'
 import { seedUniverseAction } from './actions/seed'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import { Badge } from "@/components/ui/badge"
 
 export default async function Home() {
   // You can grab the userId directly on the server
@@ -63,20 +72,45 @@ export default async function Home() {
       </header>
 
       {/* Roster Grid */}
-      <section className="mb-12">
+      
+      <section className="mb-12 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold mb-6">My Roster</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {userRoster.map((star) => (
-            <div key={star.id} className="p-4 bg-zinc-900 border border-zinc-800 rounded flex justify-between items-center">
-              <span className="font-semibold">{star.name}</span>
-              <span className={`text-xs px-2 py-1 rounded font-bold text-black ${
-                star.brand === 'RAW' ? 'bg-red-500' : 
-                star.brand === 'SmackDown' ? 'bg-blue-500' : 'bg-yellow-500'
-              }`}>
-                {star.brand}
-              </span>
-            </div>
-          ))}
+        <div className="border border-zinc-800 rounded-md bg-zinc-950/50">
+          <Table>
+            <TableHeader>
+              <TableRow className="border-zinc-800 hover:bg-transparent">
+                <TableHead className="w-[300px] text-zinc-400">Superstar</TableHead>
+                <TableHead className="text-zinc-400">Brand</TableHead>
+                <TableHead className="text-right text-zinc-400">Overall</TableHead>
+                <TableHead className="text-right text-zinc-400">Alignment</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {userRoster.map((star) => (
+                <TableRow key={star.id} className="border-zinc-800 hover:bg-zinc-900/50">
+                  <TableCell className="font-medium text-white">{star.name}</TableCell>
+                  <TableCell>
+                    <Badge 
+                      variant="outline" 
+                      className={`
+                        ${star.brand === 'RAW' ? 'border-red-500 text-red-500' : ''}
+                        ${star.brand === 'SmackDown' ? 'border-blue-500 text-blue-500' : ''}
+                        ${star.brand === 'NXT' ? 'border-yellow-500 text-yellow-500' : ''}
+                      `}
+                    >
+                      {star.brand}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-right text-white">{star.overall}</TableCell>
+                  <TableCell className="text-right">
+                    <span className={star.isHeel ? "text-red-400" : "text-green-400"}>
+                      {star.isHeel ? "Heel" : "Face"}
+                    </span>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
       </section>
 
