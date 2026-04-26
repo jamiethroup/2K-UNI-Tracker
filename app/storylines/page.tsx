@@ -21,13 +21,10 @@ export default async function StorylinesPage() {
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white p-8">
-      <header className="flex justify-between items-center mb-8 max-w-6xl mx-auto">
+      <header className="flex flex-col md:flex-row justify-between items-center mb-8 max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold">Universe Storylines</h1>
 
         <div className="flex gap-4 items-center">
-          <a href="/" className="text-sm text-zinc-400 hover:text-white underline mr-4">
-            &larr; Back to Roster
-          </a>
           <AddStorylineModal />
         </div>
       </header>

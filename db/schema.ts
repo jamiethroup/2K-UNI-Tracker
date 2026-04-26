@@ -27,3 +27,15 @@ export const storylines = pgTable('storylines', {
   status: text('status').default('Ongoing'), // e.g., 'Ongoing', 'Completed'
   createdAt: timestamp('created_at').defaultNow(),
 });
+
+export const feuds = pgTable('feuds', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  title: text('title').notNull(),
+  description: text('description'),
+  startDate: text('start_date'), // e.g., "WrestleMania Backlash" or "2026-05-12"
+  endDate: text('end_date'),
+  status: text('status').default('Active'), // 'Active' or 'Archived'
+  superstars: integer('superstars').array(), // Stores an array of superstar IDs
+  createdAt: timestamp('created_at').defaultNow(),
+});

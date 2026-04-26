@@ -119,7 +119,7 @@ export function RosterTable({ initialRoster }: { initialRoster: Superstar[] }) {
                   className={`
                     ${star.brand === 'RAW' ? 'border-red-500 text-red-500 bg-red-500/10' : ''}
                     ${star.brand === 'SmackDown' ? 'border-blue-500 text-blue-500 bg-blue-500/10' : ''}
-                    ${star.brand === 'NXT' ? 'border-yellow-500 text-yellow-500 bg-yellow-500/10' : ''}
+                    ${star.brand === 'NXT' ? 'border-orange-500 text-orange-500 bg-orange-500/10' : ''}
                     ${star.brand === 'Free Agent' ? 'border-zinc-500 text-zinc-500 bg-zinc-500/10' : ''}
                   `}
                 >

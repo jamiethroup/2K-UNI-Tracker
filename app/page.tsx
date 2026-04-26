@@ -1,6 +1,6 @@
 // app/page.tsx
 import { db } from '@/db';
-import { superstars } from '@/db/schema';
+import { feuds, storylines, superstars } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
@@ -18,6 +18,14 @@ export default async function Dashboard() {
   const userRoster = await db.select()
     .from(superstars)
     .where(eq(superstars.userId, userId));
+
+  const userStorylines = await db.select()
+    .from(storylines)
+    .where(eq(storylines.userId, userId));
+
+  const userFueds = await db.select()
+    .from(feuds)
+    .where(eq(feuds.userId, userId));
 
   if (userRoster.length === 0) {
     return (
@@ -69,6 +77,30 @@ export default async function Dashboard() {
               {userRoster.length}
             </div>
             <p className="text-xs text-zinc-500 mt-1 font-medium">Active Superstars</p>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-zinc-900 border-zinc-800 text-white">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xs font-medium text-zinc-500 uppercase tracking-wider">Current Storylines</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-4xl font-bold text-orange-500 drop-shadow-[0_0_10px_rgba(234,88,12,0.2)]">
+              {userStorylines.length}
+            </div>
+            <p className="text-xs text-zinc-500 mt-1 font-medium">Active Storylines</p>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-zinc-900 border-zinc-800 text-white">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xs font-medium text-zinc-500 uppercase tracking-wider">Current Fueds</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-4xl font-bold text-orange-500 drop-shadow-[0_0_10px_rgba(234,88,12,0.2)]">
+              {userFueds.length}
+            </div>
+            <p className="text-xs text-zinc-500 mt-1 font-medium">Active Fueds</p>
           </CardContent>
         </Card>
 

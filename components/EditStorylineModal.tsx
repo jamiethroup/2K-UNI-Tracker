@@ -26,7 +26,7 @@ export function EditStorylineModal({ story }: { story: Storyline }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger render={<Button variant="outline" size="xs" className="bg-zinc-900 border-zinc-700 hover:bg-zinc-800 text-zinc-300" />}>
+      <DialogTrigger render={<Button variant="outline" size="xs" className="bg-zinc-900 h-8 border-zinc-700 hover:bg-zinc-800 text-zinc-300" />}>
         Edit
       </DialogTrigger>
 

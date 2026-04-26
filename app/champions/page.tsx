@@ -46,7 +46,7 @@ export default async function ChampionsPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-col gap-2">
-                    <span className="text-2xl font-bold text-yellow-500">
+                    <span className="text-2xl font-bold text-orange-500">
                       {champ ? champ.name : 'Vacant'}
                     </span>
                     <span className="text-sm text-zinc-400">
