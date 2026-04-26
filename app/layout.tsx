@@ -17,10 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <html lang="en" className="dark">
         <body className={`${inter.className} bg-zinc-950 text-white flex min-h-screen`}>
           {/* SIDEBAR NAVIGATION */}
-          <aside className="w-64 border-r border-zinc-800 bg-zinc-900/50 hidden md:flex flex-col p-6 sticky top-0 h-screen">
+          <aside className="border-r border-zinc-800 bg-zinc-800/70 md:bg-zinc-900/50 flex flex-col p-6 fixed md:sticky bottom-0 w-full md:w-64 md:top-0 md:h-screen rounded-full md:rounded-none">
 
             {/* Logo Area */}
-            <div className="flex items-center gap-3 mb-10 px-3 mt-4">
+            <div className="hidden md:flex items-center gap-3 mb-10 px-3 mt-4">
               <h1 className="text-sm font-black tracking-tighter uppercase leading-none">
                 The Gorilla<br />
                 <span className="text-orange-500">Position</span>
@@ -28,17 +28,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
 
             {/* Links */}
-            <nav className="flex flex-col gap-2 flex-grow">
-              <Link href="/" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors text-sm font-medium">
+            <nav className="grid grid-cols-4 md:flex flex-col gap-2 md:flex-grow">
+              <Link href="/" className="flex flex-col md:flex-row items-center gap-3 px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors text-xs md:text-sm font-medium">
                 <LayoutDashboard className="w-4 h-4 text-zinc-400" /> Dashboard
               </Link>
-              <Link href="/" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors text-sm font-medium">
+              <Link href="/" className="flex flex-col md:flex-row items-center gap-3 px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors text-xs md:text-sm font-medium">
                 <Users className="w-4 h-4 text-zinc-400" /> Roster
               </Link>
-              <Link href="/champions" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors text-sm font-medium">
+              <Link href="/champions" className="flex flex-col md:flex-row items-center gap-3 px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors text-xs md:text-sm font-medium">
                 <Trophy className="w-4 h-4 text-zinc-400" /> Championships
               </Link>
-              <Link href="/storylines" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors text-sm font-medium">
+              <Link href="/storylines" className="flex flex-col md:flex-row items-center gap-3 px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors text-xs md:text-sm font-medium">
                 <BookOpen className="w-4 h-4 text-zinc-400" /> Storylines
               </Link>
             </nav>
